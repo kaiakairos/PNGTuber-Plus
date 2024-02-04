@@ -1,0 +1,22 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://cg7wt8xagjs7o"]
+
+[sub_resource type="AudioEffectRecord" id="AudioEffectRecord_ucpvm"]
+resource_name = "Record"
+format = 0
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_skwrq"]
+resource_name = "SpectrumAnalyzer"
+buffer_length = 0.1
+fft_size = 0
+
+[resource]
+bus/1/name = &"MIC"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = -80.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectRecord_ucpvm")
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectSpectrumAnalyzer_skwrq")
+bus/1/effect/1/enabled = true
