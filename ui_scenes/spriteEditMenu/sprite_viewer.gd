@@ -67,6 +67,7 @@ func setImage():
 	$Animation/animFramesLabel.text = "sprite frames: " + str(Global.heldSprite.frames)
 	$Animation/animFrames.value = Global.heldSprite.frames
 	
+	$VisToggle/setToggle/Label.text = "toggle: \"" + Global.heldSprite.toggle +  "\""
 	
 	changeRotLimit()
 	
@@ -338,3 +339,18 @@ func _on_anim_frames_value_changed(value):
 
 func _on_clip_linked_toggled(button_pressed):
 	Global.heldSprite.setClip(button_pressed)
+
+
+func _on_delete_pressed():
+	Global.heldSprite.toggle = "null"
+	$VisToggle/setToggle/Label.text = "toggle: \"" + Global.heldSprite.toggle +  "\""
+	Global.heldSprite.makeVis()
+
+func _on_set_toggle_pressed():
+	$VisToggle/setToggle/Label.text = "toggle: AWAITING INPUT"
+	await Global.main.fatfuckingballs
+	
+	var keys = await Global.main.spriteVisToggles
+	var key = keys[0]
+	Global.heldSprite.toggle = key
+	$VisToggle/setToggle/Label.text = "toggle: \"" + Global.heldSprite.toggle +  "\""

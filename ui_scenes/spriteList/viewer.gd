@@ -60,3 +60,4 @@ func _on_toggle_visibility_pressed():
 		$Eyes.position = Vector2(-21,12)
 	else:
 		$Eyes.position = Vector2(209,12)
+	$Area2D2/CollisionShape2D.disabled = !$NinePatchRect.visible

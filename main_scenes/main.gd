@@ -25,6 +25,7 @@ var editMode = true
 
 @onready var shadow = $shadowSprite
 
+
 #Scene Reference
 @onready var spriteObject = preload("res://ui_scenes/selectedSprite/spriteObject.tscn")
 
@@ -51,7 +52,8 @@ var fileSystemOpen = false
 signal emptiedCapture
 signal pressedKey
 var costumeKeys = ["1","2","3","4","5","6","7","8","9","0"]
-
+signal spriteVisToggles(keysPressed:Array)
+signal fatfuckingballs
 
 func _ready():
 	Global.main = self
@@ -352,6 +354,8 @@ func _on_load_dialog_file_selected(path):
 			sprite.loadedImageData = data[item]["imageData"]
 		if data[item].has("clipped"):
 			sprite.clipped = data[item]["clipped"]
+		if data[item].has("toggle"):
+			sprite.toggle = data[item]["toggle"]
 		
 		origin.add_child(sprite)
 		sprite.position = str_to_var(data[item]["pos"])
@@ -408,6 +412,8 @@ func _on_save_dialog_file_selected(path):
 			data[id]["animSpeed"] = child.animSpeed
 			
 			data[id]["clipped"] = child.clipped
+			
+			data[id]["toggle"] = child.toggle
 			
 		id += 1
 	
@@ -529,7 +535,7 @@ func moveSpriteMenu(delta):
 	
 	var size = get_viewport().get_visible_rect().size
 	
-	var windowLength = 1187
+	var windowLength = 1250 #1187
 	
 	$ViewerArrows/Arrows.position.y =  size.y - 25
 	
@@ -610,3 +616,19 @@ func _on_background_input_capture_bg_key_pressed(node, keys_pressed):
 		if i >= 0:
 			changeCostume(i+1)
 	
+
+
+func bgInputSprite(node, keys_pressed):
+	if fileSystemOpen:
+		return
+	var keyStrings = []
+	
+	for i in keys_pressed:
+		if keys_pressed[i]:
+			keyStrings.append(OS.get_keycode_string(i) if !OS.get_keycode_string(i).strip_edges().is_empty() else "Keycode" + str(i))
+	
+	if keyStrings.size() <= 0:
+		emit_signal("fatfuckingballs")
+		return
+	
+	spriteVisToggles.emit(keyStrings)

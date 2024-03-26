@@ -201,7 +201,8 @@ func _process(delta):
 func deleteKey(label,id):
 	Global.main.costumeKeys[id-1] = "null"
 	label.text = "costume " + str(id) + " key: \"" + Global.main.costumeKeys[id-1] + "\""
-
+	Global.pushUpdate("Deleted costume hotkey " + str(id) + ".")
+	
 func _on_delete_1_pressed():
 	var label = $CostumeInputs/ScrollContainer/VBoxContainer/costumeButton1/Label
 	deleteKey(label,1)

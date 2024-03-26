@@ -79,7 +79,12 @@ var clipped = false
 
 var tick = 0
 
+#Vis toggle
+var toggle = "null"
+
 func _ready():
+	
+	Global.main.spriteVisToggles.connect(visToggle)
 	
 	var img = Image.new()
 	var err = img.load(path)
@@ -389,3 +394,10 @@ func getAllLinkedSprites():
 		if node.parentId == id:
 			linkedSprites.append(node)
 	return linkedSprites
+
+func visToggle(keys):
+	if keys.has(toggle):
+		$WobbleOrigin/DragOrigin.visible = !$WobbleOrigin/DragOrigin.visible
+
+func makeVis():
+	$WobbleOrigin/DragOrigin.visible = true
