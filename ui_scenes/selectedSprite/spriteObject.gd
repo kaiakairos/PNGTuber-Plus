@@ -315,7 +315,7 @@ func drag(delta):
 	if dragSpeed == 0:
 		dragger.global_position = wob.global_position
 	else:
-		dragger.global_position = lerp(dragger.global_position,wob.global_position,(delta*20)/dragSpeed)
+		dragger.global_position = lerp(dragger.global_position,wob.global_position,1/dragSpeed)
 		dragOrigin.global_position = dragger.global_position
 
 func wobble():

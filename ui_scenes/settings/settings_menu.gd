@@ -197,3 +197,47 @@ func _process(delta):
 		hasMouse = false
 	else:
 		hasMouse = true
+
+func deleteKey(label,id):
+	Global.main.costumeKeys[id-1] = "null"
+	label.text = "costume " + str(id) + " key: \"" + Global.main.costumeKeys[id-1] + "\""
+
+func _on_delete_1_pressed():
+	var label = $CostumeInputs/ScrollContainer/VBoxContainer/costumeButton1/Label
+	deleteKey(label,1)
+
+func _on_delete_2_pressed():
+	var label = $CostumeInputs/ScrollContainer/VBoxContainer/costumeButton2/Label
+	deleteKey(label,2)
+
+func _on_delete_3_pressed():
+	var label = $CostumeInputs/ScrollContainer/VBoxContainer/costumeButton3/Label
+	deleteKey(label,3)
+
+func _on_delete_4_pressed():
+	var label = $CostumeInputs/ScrollContainer/VBoxContainer/costumeButton4/Label
+	deleteKey(label,4)
+
+func _on_delete_5_pressed():
+	var label = $CostumeInputs/ScrollContainer/VBoxContainer/costumeButton5/Label
+	deleteKey(label,5)
+
+func _on_delete_6_pressed():
+	var label = $CostumeInputs/ScrollContainer/VBoxContainer/costumeButton6/Label
+	deleteKey(label,6)
+
+func _on_delete_7_pressed():
+	var label = $CostumeInputs/ScrollContainer/VBoxContainer/costumeButton7/Label
+	deleteKey(label,7)
+
+func _on_delete_8_pressed():
+	var label = $CostumeInputs/ScrollContainer/VBoxContainer/costumeButton8/Label
+	deleteKey(label,8)
+
+func _on_delete_9_pressed():
+	var label = $CostumeInputs/ScrollContainer/VBoxContainer/costumeButton9/Label
+	deleteKey(label,9)
+
+func _on_delete_10_pressed():
+	var label = $CostumeInputs/ScrollContainer/VBoxContainer/costumeButton10/Label
+	deleteKey(label,10)

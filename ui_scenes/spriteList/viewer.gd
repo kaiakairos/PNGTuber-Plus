@@ -50,3 +50,13 @@ func clearContainer():
 func updateAllVisible():
 	for i in container.get_children():
 		i.updateVis()
+
+
+func _on_toggle_visibility_pressed():
+	$NinePatchRect.visible = !$NinePatchRect.visible
+	$ScrollContainer.visible = $NinePatchRect.visible
+	$Eyes.frame = int(!$NinePatchRect.visible)
+	if $NinePatchRect.visible:
+		$Eyes.position = Vector2(-21,12)
+	else:
+		$Eyes.position = Vector2(209,12)
