@@ -3,7 +3,7 @@ extends Node2D
 var editMode = true
 
 #Node Reference
-@onready var origin = $OriginMotion/Origin
+@onready var origin = $SpoutViewport/OriginMotion/Origin
 @onready var camera = $Camera2D
 @onready var controlPanel = $ControlPanel
 @onready var editControls = $EditControls
@@ -306,7 +306,8 @@ func _on_load_dialog_file_selected(path):
 	
 	origin.queue_free()
 	var new = Node2D.new()
-	$OriginMotion.add_child(new)
+	var originMotion = $SpoutViewport/OriginMotion
+	originMotion.add_child(new)
 	origin = new
 	
 	for item in data:

@@ -4,20 +4,25 @@
 [ext_resource type="Texture2D" uid="uid://b0qvkbedini2y" path="res://ui_scenes/selectedSprite/origin.png" id="4_i4lmg"]
 
 [node name="Sprite" type="Node2D" groups=["saved"]]
+visibility_layer = 3
 script = ExtResource("1_r8clt")
 
 [node name="WobbleOrigin" type="Node2D" parent="."]
+visibility_layer = 3
 
 [node name="Dragger" type="Node2D" parent="WobbleOrigin"]
 top_level = true
 
 [node name="DragOrigin" type="Node2D" parent="WobbleOrigin"]
+visibility_layer = 3
 
 [node name="Sprite" type="Sprite2D" parent="WobbleOrigin/DragOrigin"]
+visibility_layer = 3
 z_as_relative = false
 texture_repeat = 1
 
 [node name="Origin" type="Sprite2D" parent="WobbleOrigin/DragOrigin/Sprite"]
+visibility_layer = 3
 z_index = 2100
 position = Vector2(-16, -16)
 texture = ExtResource("4_i4lmg")
